@@ -15,9 +15,8 @@ namespace Gimpies
         // Input number with question
         public static int InputNum(String vraag)
         {
-            Console.Clear();
-            Console.WriteLine(vraag);
-            String line = Console.ReadLine();
+
+            String line = InputString(vraag);
             if (!string.IsNullOrEmpty(line))
             {
                 int i = int.Parse(line);
@@ -25,12 +24,9 @@ namespace Gimpies
                 {
                     return i;
                 }
-                else
-                {
-                    Console.WriteLine("Nummer kan niet minder dan 0 zijn, Probeer het opnieuw.");
-                    Console.ReadKey();
-                    return InputNum(vraag);
-                }
+                Console.WriteLine("Nummer kan niet minder dan 0 zijn, Probeer het opnieuw.");
+                Console.ReadKey();
+                return InputNum(vraag);
             }
             else
             {
@@ -51,19 +47,16 @@ namespace Gimpies
         // double input with question
         public static double Inputdob(String vraag)
         {
-            Console.Clear();
-            Console.WriteLine(vraag);
-            String line = Console.ReadLine();
+            String line = InputString(vraag);
             if (!string.IsNullOrEmpty(line))
             {
                 double D = double.Parse(line);
                 return D;
             }
-            else
-            {
-                double D = Inputdob(vraag);
-                return D;
-            }
+            double DD = Inputdob(vraag);
+            double inputdob = DD;
+            return inputdob;
+            
         }
     }
 }

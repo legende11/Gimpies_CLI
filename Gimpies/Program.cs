@@ -8,13 +8,18 @@ namespace Gimpies
         private static readonly String Username = "Inkoop";
         private static readonly String Password = "Gimpies_Inkoop";
         public static List<Product> products = Product.GenerateProducts();
-        public static Boolean loggedin;
-        public static Int16 tries;
+        private static Boolean loggedin;
+        private static Int16 tries;
+        
         static void Main()
         {
             Console.Title = "Gimpies";
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
             loggedin = false;
             tries = 1;
+            Console.Clear();
+
             while (!loggedin && tries <= 3)
             {
                 if (Login())
@@ -37,6 +42,10 @@ namespace Gimpies
         static Boolean Login()
         {
             String username = question.InputString("Username:");
+            if (username == "exit")
+            {
+                Environment.Exit(0);
+            }
             Console.WriteLine("Wachtwoord:");
             string password = null;
             while
@@ -65,7 +74,10 @@ namespace Gimpies
             Console.WriteLine("[A] Voorraad schoenen bekijken");
             Console.WriteLine("[B] Schoenen inkopen");
             Console.WriteLine("[C] Nieuw product");
-            Console.WriteLine("[D] Uitloggen");
+            Console.WriteLine("[D] Verkoop product");
+            Console.WriteLine("[E] Bestellingen");
+
+            Console.WriteLine("[F] Uitloggen");
             char key = Console.ReadKey().KeyChar;
             switch (key)
             {
@@ -79,6 +91,12 @@ namespace Gimpies
                     newproduct.newProduct();
                     return;
                 case 'd':
+                    verkoop.Menu();
+                    return;
+                case 'e':
+                    bestellingen.Menu();
+                    return;
+                case 'f':
                     Console.Clear();
                     Main();
                     return;

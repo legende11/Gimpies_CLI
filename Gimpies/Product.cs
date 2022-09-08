@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Gimpies
@@ -44,6 +45,25 @@ namespace Gimpies
             Program.products.Add(newproduct);
             sort(); // sort it so that the view products is ready once again
         }
+        // added one in static context
+        public static void StaticUpdate(Product oldproduct, Product newproduct)
+        {
+            Program.products.Remove(oldproduct);
+            Program.products.Add(newproduct);
+            sort(); // sort it so that the view products is ready once again
+        }
+        public static Product getproduct(int id)
+        {
+            foreach (var p in Program.products)
+            {
+                if (int.Parse(p.Uid.ToString()) == id)
+                {
+                    
+                    return p;
+                }
+            }
+            throw new InvalidOperationException();
+        }
 
         public static void sort()
         {
@@ -58,6 +78,6 @@ namespace Gimpies
 
             // oldlist -> newlist
             Program.products = tmpproducts;
-        }
+        } 
     }
 }
