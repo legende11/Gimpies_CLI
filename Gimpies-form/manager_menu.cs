@@ -12,7 +12,7 @@ public partial class manager_menu : Form
     private void Toevoegen_Click(object sender, EventArgs e)
     {
         this.Hide();
-        Form toevoegen = new voorraad();
+        Form toevoegen = new manager_toevoegen();
         toevoegen.ShowDialog();
         this.Show();
     }
@@ -20,7 +20,7 @@ public partial class manager_menu : Form
     private void Aanpassen_Click(object sender, EventArgs e)
     {
         this.Hide();
-        Form aanpassen = new voorraad();
+        Form aanpassen = new manager_aanpassen();
         aanpassen.ShowDialog();
         this.Show();
     }
@@ -28,7 +28,7 @@ public partial class manager_menu : Form
     private void Verwijderen_Click(object sender, EventArgs e)
     {
         this.Hide();
-        Form verwijderen = new voorraad();
+        Form verwijderen = new manager_verwijderen();
         verwijderen.ShowDialog();
         this.Show();
     }

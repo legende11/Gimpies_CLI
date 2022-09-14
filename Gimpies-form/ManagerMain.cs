@@ -27,7 +27,10 @@ namespace Gimpies_form
 
         private void Beheer_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Form beheer = new manager_menu();
+            beheer.ShowDialog();
+            this.Show();
         }
 
         private void Uitloggen_Click(object sender, EventArgs e)
