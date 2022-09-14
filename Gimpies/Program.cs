@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace Gimpies
 {
-    internal class Program
+    internal static class Program
     {
-        private static readonly String Username = "Inkoop";
-        private static readonly String Password = "Gimpies_Inkoop";
+        private const String Username = "Inkoop";
+        private const String Password = "Gimpies_Inkoop";
         public static List<Product> products = Product.GenerateProducts();
         private static Boolean loggedin;
         private static Int16 tries;
@@ -20,7 +20,7 @@ namespace Gimpies
             tries = 1;
             Console.Clear();
 
-            while (!loggedin && tries <= 3)
+            while (tries <= 3 && !loggedin)
             {
                 if (Login())
                 {

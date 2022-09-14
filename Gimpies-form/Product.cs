@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Gimpies
+﻿namespace Gimpies
 {
+    
     public class Product
     {
         public string Merk;
@@ -13,7 +10,8 @@ namespace Gimpies
         public int Aantal;
         public double Prijs;
         public char Uid;
-
+        public static List<Product> products =GenerateProducts();
+    
         public Product(string merk, string type, double maat, string kleur, int aantal, double prijs, char uid)
         {
             Merk = merk;
@@ -47,20 +45,20 @@ namespace Gimpies
         // update the products in the map by deleting the old one
         public void UpdateProduct(Product oldproduct, Product newproduct)
         {
-            Program.products.Remove(oldproduct);
-            Program.products.Add(newproduct);
+            products.Remove(oldproduct);
+            products.Add(newproduct);
             sort(); // sort it so that the view products is ready once again
         }
         // added one in static context
         public static void StaticUpdate(Product oldproduct, Product newproduct)
         {
-            Program.products.Remove(oldproduct);
-            Program.products.Add(newproduct);
+            products.Remove(oldproduct);
+            products.Add(newproduct);
             sort(); // sort it so that the view products is ready once again
         }
         public static Product getproduct(int id)
         {
-            foreach (var p in Program.products)
+            foreach (var p in products)
             {
                 if (int.Parse(p.Uid.ToString()) == id)
                 {
@@ -76,14 +74,14 @@ namespace Gimpies
             // temporarily create a new list
             List<Product> tmpproducts = new List<Product>();
             // sort the old list and push them to new list
-            foreach (var VARIABLE in Program.products.OrderBy(x => int.Parse(x.Uid.ToString())))
+            foreach (var VARIABLE in products.OrderBy(x => int.Parse(x.Uid.ToString())))
             {
                 // add product to tmp array
                 tmpproducts.Add(VARIABLE);
             }
 
             // oldlist -> newlist
-            Program.products = tmpproducts;
+            products = tmpproducts;
         } 
     }
 }

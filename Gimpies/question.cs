@@ -4,10 +4,11 @@ namespace Gimpies
 {
     public class question
     {
+        
+        // recursion ftw. 
         // String input with question
         public static string InputString(String vraag)
         {
-            //Console.Clear();
             Console.WriteLine(vraag);
             return Console.ReadLine();
         }
@@ -15,48 +16,36 @@ namespace Gimpies
         // Input number with question
         public static int InputNum(String vraag)
         {
-
-            String line = InputString(vraag);
-            if (!string.IsNullOrEmpty(line))
+            try
             {
-                int i = int.Parse(line);
-                if (i > 0)
-                {
-                    return i;
-                }
-                Console.WriteLine("Nummer kan niet minder dan 0 zijn, Probeer het opnieuw.");
-                Console.ReadKey();
+                String line = InputString(vraag);
+                int number = Convert.ToInt32(line);
+                return number > 0 ? number : InputNum(vraag);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Input ongeldig.");
                 return InputNum(vraag);
             }
-            else
-            {
-                int i = InputNum(vraag);
-                if (i > 0)
-                {
-                    return i;
-                }
-                else
-                {
-                    Console.WriteLine("Nummer kan niet minder dan 0 zijn, Probeer het opnieuw.");
-                    Console.ReadKey();
-                    return InputNum(vraag);
-                }
-            }
+
         }
+        
 
         // double input with question
         public static double Inputdob(String vraag)
         {
-            String line = InputString(vraag);
-            if (!string.IsNullOrEmpty(line))
+            try
             {
-                double D = double.Parse(line);
-                return D;
+                String line = InputString(vraag);
+                double dob = Convert.ToDouble(line);
+                return dob;
             }
-            double DD = Inputdob(vraag);
-            double inputdob = DD;
-            return inputdob;
-            
+            catch (Exception)
+            {
+                Console.WriteLine("Input ongeldig.");
+                return Inputdob(vraag);
+            }
+
         }
     }
 }

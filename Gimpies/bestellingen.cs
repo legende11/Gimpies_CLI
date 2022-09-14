@@ -6,8 +6,8 @@ namespace Gimpies
     public class bestelling
     {
         public Product product;
-        public bool gekocht = false;
-        public int aantal = 0;
+        public bool gekocht;
+        public int aantal;
         public bestelling(Product P, bool Gekocht, int Aantal)
         {
             product = P;
@@ -74,7 +74,7 @@ namespace Gimpies
                     array[k] = new bestelling(array[k].product, true, array[k].aantal);
                     Menu();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Menu();
                 }

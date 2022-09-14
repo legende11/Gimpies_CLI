@@ -45,6 +45,7 @@ namespace Gimpies
             Console.WriteLine("[E] Voorraad");
             Console.WriteLine("[F] Prijs");
             Char k = Console.ReadKey().KeyChar;
+            Console.Clear();
             switch (k)
             {
                 // these will generate new products with the supplied information & swap them out in the map
@@ -91,6 +92,7 @@ namespace Gimpies
             }
 
             // your done, open the menu.
+            Console.Clear();
             Program.Menu();
         }
     }
