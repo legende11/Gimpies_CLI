@@ -7,10 +7,11 @@ namespace Gimpies
     {
         private const String Username = "Inkoop";
         private const String Password = "Gimpies_Inkoop";
-        public static List<Product> products = Product.GenerateProducts();
+        public static List<Product> products = database.getproducts();
         private static Boolean loggedin;
         private static Int16 tries;
-        
+        private static database DB = new database();
+
         static void Main()
         {
             Console.Title = "Gimpies";
@@ -58,9 +59,12 @@ namespace Gimpies
                 Console.Write('*');
             }
 
-            if (username == Username && password == Password)
+            if (database.CheckLogin(username, password))
             {
-                return true;
+                if (database.getrank(username) == 0)
+                {
+                    return true;
+                }
             }
 
             return false;

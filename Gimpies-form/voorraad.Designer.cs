@@ -31,6 +31,7 @@ partial class voorraad
     private void InitializeComponent()
     {
             this.vorraad = new System.Windows.Forms.Label();
+            this.back = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // vorraad
@@ -42,11 +43,22 @@ partial class voorraad
             this.vorraad.TabIndex = 0;
             this.vorraad.Text = "Voorraad:";
             // 
+            // back
+            // 
+            this.back.Location = new System.Drawing.Point(713, 415);
+            this.back.Name = "back";
+            this.back.Size = new System.Drawing.Size(75, 23);
+            this.back.TabIndex = 1;
+            this.back.Text = "back";
+            this.back.UseVisualStyleBackColor = true;
+            this.back.Click += new System.EventHandler(this.back_Click);
+            // 
             // voorraad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.back);
             this.Controls.Add(this.vorraad);
             this.Name = "voorraad";
             this.Text = "voorraad";
@@ -59,4 +71,5 @@ partial class voorraad
     #endregion
 
     private Label vorraad;
+    private Button back;
 }

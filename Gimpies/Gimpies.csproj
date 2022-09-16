@@ -12,6 +12,7 @@
         <FileAlignment>512</FileAlignment>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
         <Deterministic>true</Deterministic>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -44,6 +45,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="bestellingen.cs" />
+        <Compile Include="database.cs" />
         <Compile Include="inkopen.cs" />
         <Compile Include="newproduct.cs" />
         <Compile Include="Product.cs" />

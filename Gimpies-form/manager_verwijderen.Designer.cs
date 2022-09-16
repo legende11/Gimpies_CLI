@@ -37,6 +37,7 @@ partial class manager_verwijderen
             this.merk = new System.Windows.Forms.TextBox();
             this.product = new System.Windows.Forms.TextBox();
             this.main_but = new System.Windows.Forms.Button();
+            this.annuleer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Prijs
@@ -91,11 +92,22 @@ partial class manager_verwijderen
             this.main_but.UseVisualStyleBackColor = true;
             this.main_but.Click += new System.EventHandler(this.main_but_Click);
             // 
+            // annuleer
+            // 
+            this.annuleer.Location = new System.Drawing.Point(12, 82);
+            this.annuleer.Name = "annuleer";
+            this.annuleer.Size = new System.Drawing.Size(100, 23);
+            this.annuleer.TabIndex = 17;
+            this.annuleer.Text = "Annuleer";
+            this.annuleer.UseVisualStyleBackColor = true;
+            this.annuleer.Click += new System.EventHandler(this.annuleer_Click);
+            // 
             // manager_verwijderen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.annuleer);
             this.Controls.Add(this.Prijs);
             this.Controls.Add(this.kleur);
             this.Controls.Add(this.maat);
@@ -119,4 +131,5 @@ partial class manager_verwijderen
     private TextBox merk;
     private TextBox product;
     private Button main_but;
+    private Button annuleer;
 }

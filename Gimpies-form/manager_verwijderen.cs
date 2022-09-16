@@ -10,6 +10,7 @@ public partial class manager_verwijderen : Form
     public manager_verwijderen()
     {
         InitializeComponent();
+        annuleer.Hide();
         loaded = false;
     }
 
@@ -30,8 +31,8 @@ public partial class manager_verwijderen : Form
                 //Aantal.Text = Convert.ToString(saveproduct.Aantal);
                 Prijs.Text = Convert.ToString(saveproduct.Prijs);
                 loaded = true;
-                main_but.Text = "Delete";
-
+                main_but.Text = "Delete?";
+                annuleer.Show();
 
             }
             catch (Exception)
@@ -49,5 +50,10 @@ public partial class manager_verwijderen : Form
             Product.products.Remove(saveproduct);
             Close();
         }
+    }
+
+    private void annuleer_Click(object sender, EventArgs e)
+    {
+        Close();
     }
 }

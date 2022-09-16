@@ -20,6 +20,16 @@ public partial class manager_toevoegen : Form
     {
         try
         {
+            if (Product.exists(merk.Text, type.Text, Convert.ToDouble(maat.Text), kleur.Text))
+            {
+                merk.Text = "Product";
+                type.Text = "Bestaat";
+                maat.Text = "Al";
+                kleur.Text = "";
+                //Aantal.Text = "";
+                Prijs.Text = "";
+                return;
+            }
             char uid = (Product.products.Count + 1).ToString().ToCharArray()[0];
             Product NewProduct = new Product(merk.Text, type.Text, Convert.ToDouble(maat.Text), kleur.Text, 0, Convert.ToDouble(Prijs.Text), uid);
             Product.products.Add(NewProduct);

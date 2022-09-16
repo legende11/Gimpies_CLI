@@ -76,9 +76,9 @@
             this.Tries.Location = new System.Drawing.Point(669, 6);
             this.Tries.Name = "Tries";
             this.Tries.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Tries.Size = new System.Drawing.Size(119, 15);
+            this.Tries.Size = new System.Drawing.Size(122, 15);
             this.Tries.TabIndex = 4;
-            this.Tries.Text = "Pogingen resterent: 3";
+            this.Tries.Text = "Pogingen resterend: 3";
             this.Tries.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // Login

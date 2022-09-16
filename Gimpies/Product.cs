@@ -32,16 +32,16 @@ namespace Gimpies
         // best way to get products for now
         public static List<Product> GenerateProducts()
         {
-            //TODO: Get a way to save the list to a file and read it on startup. this makes it that changes persist between sessions
-            List<Product> Products = new List<Product>
-            {
-                new Product("Nike", "Air max", 32, "Zwart", 16, 120.00, '1'),
-                new Product("Adidas", "Schoenen", 33, "Wit", 12, 126.90, '2'),
-                new Product("Scapino", "Schoenen", 45, "Oranje & Blauw", 12, 9, '3'),
-                new Product("Nike", "Air max 1", 32, "Zwart", 16, 120.00, '4')
-            };
-
-            return Products;
+            // //TODO: Get a way to save the list to a file and read it on startup. this makes it that changes persist between sessions
+            // List<Product> Products = new List<Product>
+            // {
+            //     new Product("Nike", "Air max", 32, "Zwart", 16, 120.00, '1'),
+            //     new Product("Adidas", "Schoenen", 33, "Wit", 12, 126.90, '2'),
+            //     new Product("Scapino", "Schoenen", 45, "Oranje & Blauw", 12, 9, '3'),
+            //     new Product("Nike", "Air max 1", 32, "Zwart", 16, 120.00, '4')
+            // };
+            
+            return database.getproducts();
         }
 
         // update the products in the map by deleting the old one
@@ -84,6 +84,8 @@ namespace Gimpies
 
             // oldlist -> newlist
             Program.products = tmpproducts;
-        } 
+            database.SaveProducts(Program.products);
+        }
+        
     }
 }

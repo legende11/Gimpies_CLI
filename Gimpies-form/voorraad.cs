@@ -18,4 +18,9 @@ public partial class voorraad : Form
     {
 
     }
+
+    private void back_Click(object sender, EventArgs e)
+    {
+        Close();
+    }
 }

@@ -42,6 +42,18 @@
             return Products;
         }
 
+        public static bool exists(string merk, string type, double maat, string kleur)
+        {
+            foreach (Product product in products)
+            {
+                if (product.Merk == merk && product.Type == type && product.Maat == maat && product.Kleur == kleur)
+                {
+                    return true;
+                } 
+            }
+            return false;
+        }
+
         // update the products in the map by deleting the old one
         public void UpdateProduct(Product oldproduct, Product newproduct)
         {

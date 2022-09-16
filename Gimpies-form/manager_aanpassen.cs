@@ -42,6 +42,16 @@ public partial class manager_aanpassen : Form
     {
         try
         {
+            Product.products.Remove(saveproduct); // remove it from the array as it gets put back once you save
+            if (Product.exists(merk.Text, type.Text, Convert.ToDouble(maat.Text), kleur.Text))
+            {
+                merk.Text = "Product";
+                maat.Text = "Al";
+                kleur.Text = "";
+                //Aantal.Text = "";
+                Prijs.Text = "";
+                return;
+            }
             Product NewProduct = new Product(merk.Text, type.Text, Convert.ToDouble(maat.Text), kleur.Text, saveproduct.Aantal, Convert.ToDouble(Prijs.Text), saveproduct.Uid);
             Product.StaticUpdate(saveproduct, NewProduct);
             Close();
