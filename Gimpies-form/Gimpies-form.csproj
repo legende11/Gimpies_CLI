@@ -1,37 +1,37 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
-    <RootNamespace>Gimpies_form</RootNamespace>
-    <Nullable>enable</Nullable>
-    <UseWindowsForms>true</UseWindowsForms>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <RootNamespace>Gimpies_form</RootNamespace>
+        <Nullable>enable</Nullable>
+        <UseWindowsForms>true</UseWindowsForms>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Update="voorraad.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="verkoop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="manager_menu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="manager_toevoegen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="manager_aanpassen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="manager_verwijderen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-  </ItemGroup>
+    <ItemGroup>
+        <Compile Update="voorraad.cs">
+            <SubType>Form</SubType>
+        </Compile>
+        <Compile Update="verkoop.cs">
+            <SubType>Form</SubType>
+        </Compile>
+        <Compile Update="manager_menu.cs">
+            <SubType>Form</SubType>
+        </Compile>
+        <Compile Update="manager_toevoegen.cs">
+            <SubType>Form</SubType>
+        </Compile>
+        <Compile Update="manager_aanpassen.cs">
+            <SubType>Form</SubType>
+        </Compile>
+        <Compile Update="manager_verwijderen.cs">
+            <SubType>Form</SubType>
+        </Compile>
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="System.Data.SqlClient" Version="4.8.3"/>
+    </ItemGroup>
 
 </Project>

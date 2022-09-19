@@ -4,7 +4,6 @@ namespace Gimpies
 {
     public class question
     {
-        
         // recursion ftw. 
         // String input with question
         public static string InputString(String vraag)
@@ -27,9 +26,8 @@ namespace Gimpies
                 Console.WriteLine("Input ongeldig.");
                 return InputNum(vraag);
             }
-
         }
-        
+
 
         // double input with question
         public static double Inputdob(String vraag)
@@ -45,7 +43,6 @@ namespace Gimpies
                 Console.WriteLine("Input ongeldig.");
                 return Inputdob(vraag);
             }
-
         }
     }
 }

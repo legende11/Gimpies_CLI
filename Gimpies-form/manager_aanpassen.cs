@@ -11,7 +11,6 @@ public partial class manager_aanpassen : Form
         InitializeComponent();
     }
 
-    
 
     private void load_but_Click(object sender, EventArgs e)
     {
@@ -24,8 +23,6 @@ public partial class manager_aanpassen : Form
             kleur.Text = saveproduct.Kleur;
             //Aantal.Text = Convert.ToString(saveproduct.Aantal);
             Prijs.Text = Convert.ToString(saveproduct.Prijs);
-
-
         }
         catch (Exception)
         {
@@ -55,7 +52,6 @@ public partial class manager_aanpassen : Form
             Product NewProduct = new Product(merk.Text, type.Text, Convert.ToDouble(maat.Text), kleur.Text, saveproduct.Aantal, Convert.ToDouble(Prijs.Text), saveproduct.Uid);
             Product.StaticUpdate(saveproduct, NewProduct);
             Close();
-
         }
         catch (Exception)
         {
@@ -66,6 +62,5 @@ public partial class manager_aanpassen : Form
             //Aantal.Text = "";
             Prijs.Text = "";
         }
-
     }
 }

@@ -31,6 +31,5 @@ public partial class verkoop : Form
         {
             ERROR.Text = "Error: product updaten niet gelukt";
         }
-
     }
 }

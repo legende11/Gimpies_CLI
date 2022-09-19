@@ -15,7 +15,6 @@ public partial class manager_verwijderen : Form
     }
 
 
-
     private void main_but_Click(object sender, EventArgs e)
     {
         if (!loaded)
@@ -33,7 +32,6 @@ public partial class manager_verwijderen : Form
                 loaded = true;
                 main_but.Text = "Delete?";
                 annuleer.Show();
-
             }
             catch (Exception)
             {
@@ -48,6 +46,7 @@ public partial class manager_verwijderen : Form
         else
         {
             Product.products.Remove(saveproduct);
+            new database().DeleteProdut(saveproduct.Uid);
             Close();
         }
     }

@@ -12,9 +12,9 @@ namespace Gimpies
         public string Kleur;
         public int Aantal;
         public double Prijs;
-        public char Uid;
+        public int Uid;
 
-        public Product(string merk, string type, double maat, string kleur, int aantal, double prijs, char uid)
+        public Product(string merk, string type, double maat, string kleur, int aantal, double prijs, int uid)
         {
             Merk = merk;
             Type = type;
@@ -40,13 +40,14 @@ namespace Gimpies
             //     new Product("Scapino", "Schoenen", 45, "Oranje & Blauw", 12, 9, '3'),
             //     new Product("Nike", "Air max 1", 32, "Zwart", 16, 120.00, '4')
             // };
-            
+
             return database.getproducts();
         }
 
         // update the products in the map by deleting the old one
         public void UpdateProduct(Product oldproduct, Product newproduct)
         {
+            database.updateProduct(oldproduct.Uid, newproduct);
             Program.products.Remove(oldproduct);
             Program.products.Add(newproduct);
             sort(); // sort it so that the view products is ready once again
@@ -54,6 +55,7 @@ namespace Gimpies
         // added one in static context
         public static void StaticUpdate(Product oldproduct, Product newproduct)
         {
+            database.updateProduct(oldproduct.Uid, newproduct);
             Program.products.Remove(oldproduct);
             Program.products.Add(newproduct);
             sort(); // sort it so that the view products is ready once again
@@ -64,7 +66,6 @@ namespace Gimpies
             {
                 if (int.Parse(p.Uid.ToString()) == id)
                 {
-                    
                     return p;
                 }
             }
@@ -84,8 +85,6 @@ namespace Gimpies
 
             // oldlist -> newlist
             Program.products = tmpproducts;
-            database.SaveProducts(Program.products);
         }
-        
     }
 }

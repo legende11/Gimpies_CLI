@@ -1,6 +1,5 @@
 ﻿namespace Gimpies
 {
-    
     public class Product
     {
         public string Merk;
@@ -9,10 +8,10 @@
         public string Kleur;
         public int Aantal;
         public double Prijs;
-        public char Uid;
-        public static List<Product> products =GenerateProducts();
-    
-        public Product(string merk, string type, double maat, string kleur, int aantal, double prijs, char uid)
+        public int Uid;
+        public static List<Product> products = database.getproducts();
+
+        public Product(string merk, string type, double maat, string kleur, int aantal, double prijs, int uid)
         {
             Merk = merk;
             Type = type;
@@ -49,7 +48,7 @@
                 if (product.Merk == merk && product.Type == type && product.Maat == maat && product.Kleur == kleur)
                 {
                     return true;
-                } 
+                }
             }
             return false;
         }
@@ -57,6 +56,7 @@
         // update the products in the map by deleting the old one
         public void UpdateProduct(Product oldproduct, Product newproduct)
         {
+            database.updateProduct(oldproduct.Uid, newproduct);
             products.Remove(oldproduct);
             products.Add(newproduct);
             sort(); // sort it so that the view products is ready once again
@@ -64,6 +64,7 @@
         // added one in static context
         public static void StaticUpdate(Product oldproduct, Product newproduct)
         {
+            database.updateProduct(oldproduct.Uid, newproduct);
             products.Remove(oldproduct);
             products.Add(newproduct);
             sort(); // sort it so that the view products is ready once again
@@ -74,7 +75,6 @@
             {
                 if (int.Parse(p.Uid.ToString()) == id)
                 {
-                    
                     return p;
                 }
             }
@@ -94,6 +94,6 @@
 
             // oldlist -> newlist
             products = tmpproducts;
-        } 
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace Gimpies
         private static string kleur;
         private static int aantal;
         private static double prijs;
-        private static char uid;
+        private static int uid;
         public static void newProduct()
         {
             merk = question.InputString("Wat is het merk?");
@@ -25,8 +25,9 @@ namespace Gimpies
             Console.Clear();
             prijs = question.Inputdob("Hoeveel kost de schoen? (In euro's)");
             Console.Clear();
-            uid = char.Parse((Program.products.Count + 1).ToString());
+            uid = Program.products.Count + 1;
             Product p = new Product(merk, type, maat, kleur, aantal, prijs, uid);
+            database.SaveProducts(p);
             Program.products.Add(p);
             Product.sort();
             Program.Menu();

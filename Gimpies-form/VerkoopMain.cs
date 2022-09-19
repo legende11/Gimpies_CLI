@@ -36,7 +36,6 @@ namespace Gimpies_form
         private void Uitloggen_Click(object sender, EventArgs e)
         {
             this.Close();
-
         }
     }
 }

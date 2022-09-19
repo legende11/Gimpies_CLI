@@ -1,3 +1,5 @@
+using Gimpies;
+
 namespace Gimpies_form
 {
     public partial class Form1 : Form
@@ -6,7 +8,9 @@ namespace Gimpies_form
         private database DB = new database();
         public Form1()
         {
+            tries = 3;
             InitializeComponent();
+
             password.Text = "";
             // The password character is an asterisk.
             password.PasswordChar = '*';
@@ -16,13 +20,11 @@ namespace Gimpies_form
 
         private void username_b_TextChanged(object sender, EventArgs e)
         {
-
         }
 
 
         private void password_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void FailedAttempt()
@@ -34,8 +36,8 @@ namespace Gimpies_form
                 this.Close();
             }
         }
-        
-        private void Reset()
+
+        public void Reset()
         {
             // reset the default values and show the login page again
             username_b.Text = "";
@@ -46,59 +48,28 @@ namespace Gimpies_form
 
         private void Login_Click(object sender, EventArgs e)
         {
-        //     switch(username_b.Text)
-        //     {
-        //         case "Verkoop":
-        //             if(password.Text == "Gimpies_Verkoop")
-        //             {
-        //                 this.Hide();
-        //                 Form verkoop = new VerkoopMain();
-        //                 verkoop.ShowDialog();
-        //                 Reset();
-        //             } else
-        //             {
-        //                 FailedAttempt();
-        //             }
-        //             break;
-        //
-        //         case "Admin":
-        //             if (password.Text == "Gimpies_Admin")
-        //             {
-        //                 this.Hide();
-        //                 Form Manager = new ManagerMain();
-        //                 Manager.ShowDialog();
-        //                 Reset();
-        //             } else
-        //             {
-        //                 FailedAttempt();
-        //             }
-        //             break;
-        //         default:
-        //             FailedAttempt();
-        //             break;
-        //     }
-        bool login = DB.CheckLogin(username_b.Text, password.Text);
-        if (login)
-        {
-            if (DB.getrank(username_b.Text) == 1)
+            bool login = DB.CheckLogin(username_b.Text, password.Text);
+            if (login)
             {
-                this.Hide();
-                Form verkoop = new VerkoopMain();
-                verkoop.ShowDialog();
-                Reset();
-
-            } else if (DB.getrank(username_b.Text) == 2)
-            {
-                this.Hide();
-                Form Manager = new ManagerMain();
-                Manager.ShowDialog();
-                Reset();
+                if (DB.getrank(username_b.Text) == 1)
+                {
+                    this.Hide();
+                    Form verkoop = new VerkoopMain();
+                    verkoop.ShowDialog();
+                    Reset();
+                }
+                else if (DB.getrank(username_b.Text) == 2)
+                {
+                    this.Hide();
+                    Form Manager = new ManagerMain();
+                    Manager.ShowDialog();
+                    Reset();
+                }
             }
-        }
-        else
-        {
-            FailedAttempt();
-        }
+            else
+            {
+                FailedAttempt();
+            }
         }
     }
 }

@@ -18,14 +18,15 @@ namespace Gimpies
 
     public class bestellingen
     {
-        static Dictionary<int, bestelling> array = new Dictionary<int, bestelling>();
+        public static Dictionary<int, bestelling> array = database.getorders();
         private static void nieuwe()
         {
             Console.Clear();
             Console.WriteLine("Nieuwe bestelling opgeven");
             int productID = question.InputNum("Product nummer?");
             int aantal = question.InputNum("Hoeveel van dit product is bestelt.");
-            array.Add(array.Count + 1, new bestelling(Product.getproduct(productID), false, aantal));
+            database.Saveorder(Product.getproduct(productID), aantal);
+            array = database.getorders();
             Menu();
         }
         public static void Menu()
@@ -72,6 +73,7 @@ namespace Gimpies
                 try
                 {
                     array[k] = new bestelling(array[k].product, true, array[k].aantal);
+                    database.updateorder(k);
                     Menu();
                 }
                 catch (Exception)

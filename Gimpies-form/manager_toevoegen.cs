@@ -33,6 +33,7 @@ public partial class manager_toevoegen : Form
             char uid = (Product.products.Count + 1).ToString().ToCharArray()[0];
             Product NewProduct = new Product(merk.Text, type.Text, Convert.ToDouble(maat.Text), kleur.Text, 0, Convert.ToDouble(Prijs.Text), uid);
             Product.products.Add(NewProduct);
+            new database().SaveProducts(NewProduct);
             Close();
         }
         catch (Exception)
@@ -48,28 +49,22 @@ public partial class manager_toevoegen : Form
 
     private void Prijs_TextChanged(object sender, EventArgs e)
     {
-
     }
-
 
 
     private void kleur_TextChanged(object sender, EventArgs e)
     {
-
     }
 
     private void maat_TextChanged(object sender, EventArgs e)
     {
-
     }
 
     private void type_TextChanged(object sender, EventArgs e)
     {
-
     }
 
     private void merk_TextChanged(object sender, EventArgs e)
     {
-
     }
 }

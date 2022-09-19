@@ -121,7 +121,7 @@ namespace Gimpies
                 Console.WriteLine(
                     $"[{product.Uid}] Aantal {product.Aantal} Van {product.Kleur} {product.Merk} {product.Type} met de maat {product.Maat} voor de prijs van {product.Prijs}");
             }
-            
+
             Console.WriteLine("Druk op een knop om terug te gaan naar het menu.");
 
             Console.ReadKey();

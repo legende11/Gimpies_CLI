@@ -27,7 +27,7 @@ namespace Gimpies
                 {
                     continue;
                 }
-                Product.StaticUpdate(p, new Product(p.Merk, p.Type, p.Maat, p.Kleur, p.Aantal-1, p.Prijs, p.Uid));
+                Product.StaticUpdate(p, new Product(p.Merk, p.Type, p.Maat, p.Kleur, p.Aantal - 1, p.Prijs, p.Uid));
                 Program.Menu();
                 return;
             }
