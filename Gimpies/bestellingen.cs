@@ -32,6 +32,7 @@ namespace Gimpies
         public static void Menu()
         {
             Console.Clear();
+            array = database.getorders();
             Console.WriteLine("[A] Ga terug");
             Console.WriteLine("[B] Nieuwe bestelling");
             Console.WriteLine("[c] Bestellingen");

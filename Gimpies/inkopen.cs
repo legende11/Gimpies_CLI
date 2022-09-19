@@ -6,6 +6,7 @@ namespace Gimpies
     {
         public static void Editor()
         {
+            Program.products = database.getproducts(); // update products
             Console.Clear();
             Console.WriteLine("Inkoop");
             Console.WriteLine("[0] Terug naar menu");

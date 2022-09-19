@@ -7,6 +7,7 @@ namespace Gimpies
         public static void Menu()
         {
             Console.Clear();
+            Program.products = database.getproducts(); // update products
             Console.WriteLine("Verkoop");
             Console.WriteLine("[0] Terug naar menu");
             foreach (var product in Program.products)

@@ -23,6 +23,7 @@ namespace Gimpies
             Aantal = aantal;
             Prijs = prijs;
             Uid = uid;
+            Program.products = database.getproducts(); // update products once a new product gets generated
         }
 
         public void cout()

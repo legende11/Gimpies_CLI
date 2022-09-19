@@ -13,6 +13,7 @@ namespace Gimpies
         private static int uid;
         public static void newProduct()
         {
+            Program.products = database.getproducts(); // update products
             merk = question.InputString("Wat is het merk?");
             Console.Clear();
             type = question.InputString("Welke schoen is het?");
