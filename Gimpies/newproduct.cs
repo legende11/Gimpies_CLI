@@ -29,7 +29,8 @@ namespace Gimpies
             uid = Program.products.Count + 1;
             Product p = new Product(merk, type, maat, kleur, aantal, prijs, uid);
             database.SaveProducts(p);
-            Program.products.Add(p);
+            //Program.products.Add(p);
+            Program.products = database.getproducts();
             Product.sort();
             Program.Menu();
         }

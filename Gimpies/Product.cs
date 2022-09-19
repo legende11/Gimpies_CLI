@@ -23,8 +23,8 @@ namespace Gimpies
             Aantal = aantal;
             Prijs = prijs;
             Uid = uid;
-            Program.products = database.getproducts(); // update products once a new product gets generated
         }
+            
 
         public void cout()
         {
@@ -33,7 +33,6 @@ namespace Gimpies
         // best way to get products for now
         public static List<Product> GenerateProducts()
         {
-            // //TODO: Get a way to save the list to a file and read it on startup. this makes it that changes persist between sessions
             // List<Product> Products = new List<Product>
             // {
             //     new Product("Nike", "Air max", 32, "Zwart", 16, 120.00, '1'),

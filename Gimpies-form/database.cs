@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using Gimpies_form;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace Gimpies;
 
@@ -13,6 +15,8 @@ public class database
 
 
     public Dictionary<string, string> getVerkoop()
+
+
     {
         using (SqlCommand cmd = new SqlCommand("SELECT * FROM \"login\" WHERE TypeUser = 1;", Connection))
         {
@@ -261,4 +265,116 @@ public class database
             }
         }
     }
+    
+        public void NewUser(string username, string password, int rank)
+    {
+        Connection.Close();
+
+        {
+            String query =
+                "set identity_insert product off; INSERT INTO login (nameUser, passUser, TypeUser) VALUES (@username, @password, @id); set identity_insert product on;";
+
+            using (SqlCommand command = new SqlCommand(query, Connection))
+            {
+                command.Parameters.AddWithValue("@username", username);
+                command.Parameters.AddWithValue("@password", password);
+                command.Parameters.AddWithValue("@id", rank);
+
+                Connection.Open();
+                int result = command.ExecuteNonQuery();
+
+                // Check Error
+                if (result < 0)
+                    Console.WriteLine("Error inserting data into Database!");
+            }
+        }
+
+        Product.products = database.getproducts();
+    }
+
+        
+        public usercl getuser(int id)
+        {
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM \"login\";", Connection))
+            {
+                Dictionary<string, string> Logins = new Dictionary<string, string>();
+                Logins.Clear();
+                Connection.Close();
+                Connection.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    // Check is the reader has any rows at all before starting to read.
+                    if (!reader.HasRows)
+                    {
+                        return new usercl(-1, "Error", "Error", -1);
+                    }
+                    // Read advances to the next row.
+                    while (reader.Read())
+                    {
+                        if (reader.GetInt32(reader.GetOrdinal("id")) == id)
+                        {
+                            return new usercl(reader.GetInt32(reader.GetOrdinal("id")), reader.GetString(reader.GetOrdinal("nameUser")), reader.GetString(reader.GetOrdinal("passUser")),
+                                reader.GetInt32(reader.GetOrdinal("TypeUser")));
+                        }
+                        // Logins.Add(reader.GetString(reader.GetOrdinal("nameUser")), reader.GetString(reader.GetOrdinal("passUser")));
+                    }
+                    return new usercl(-1, "Error", "Error", -1);
+
+                    Connection.Close();
+
+
+                }
+                
+            }
+        }
+
+    public void deleteUser(int id)
+    {
+        Connection.Close();
+
+        {
+            // String query = "UPDATE product SET (id,brand, type, size, color, price, aantal) VALUES (@id, @brand, @type, @size, @color, @price, @aantal) WHERE id = @id";
+            String query = "DELETE FROM login WHERE id = @id; ";
+
+            using (SqlCommand command = new SqlCommand(query, Connection))
+            {
+                command.Parameters.AddWithValue("@id", id);
+
+
+                Connection.Open();
+                int result = command.ExecuteNonQuery();
+
+                // Check Error
+                if (result < 0)
+                    Console.WriteLine("Error inserting data into Database!");
+            }
+        }
+        // DELETE FROM table_name WHERE condition; 
+    }
+
+    public static void updateUser(int id, string username, string password, int typeuser)
+    {
+        Connection.Close();
+
+        {
+            // String query = "UPDATE product SET (id,brand, type, size, color, price, aantal) VALUES (@id, @brand, @type, @size, @color, @price, @aantal) WHERE id = @id";
+            String query = "UPDATE product SET nameUser = @nameUser, passUser = @passUser, TypeUser = @typeuser WHERE id = @id;";
+
+            using (SqlCommand command = new SqlCommand(query, Connection))
+            {
+                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@nameUser", username);
+                command.Parameters.AddWithValue("@passUser", password);
+                command.Parameters.AddWithValue("@typeuser", typeuser);
+
+                Connection.Open();
+                int result = command.ExecuteNonQuery();
+
+                // Check Error
+                if (result < 0)
+                    Console.WriteLine("Error inserting data into Database!");
+            }
+        }
+    }
+    
 }
