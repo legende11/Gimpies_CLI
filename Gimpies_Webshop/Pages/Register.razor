@@ -1,0 +1,20 @@
+﻿@page "/Register"
+
+
+<PageTitle>Register</PageTitle>
+<input type="text" @bind="username"/>
+<input type="text"@bind="password"/>
+<br />
+<button @onclick="RegisterVoid">Login</button>
+
+
+
+@code {
+    public string? username { get; set; }
+    public string? password { get; set; }
+
+    public void RegisterVoid() {
+        Console.WriteLine(username);
+        Console.WriteLine(password);
+    }
+}

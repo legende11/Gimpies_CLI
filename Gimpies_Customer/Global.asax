@@ -1,0 +1,1 @@
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Gimpies_Customer.MvcApplication" Language="C#" %>

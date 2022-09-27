@@ -1,0 +1,19 @@
+﻿@page "/Login"
+
+<PageTitle>Login</PageTitle>
+<input type="text" @bind="username"/>
+<input type="text"@bind="password"/>
+<br />
+<button @onclick="LoginVoid">Login</button>
+
+
+
+@code {
+    public string username { get; set; }   
+    public string password { get; set; }   
+
+    public void LoginVoid() {
+        Console.WriteLine(username);
+        Console.WriteLine(password);
+    }
+}
