@@ -5,7 +5,11 @@ VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gimpies", "Gimpies\Gimpies.csproj", "{AE46ADE6-412B-41FD-9B15-4E3D65AFFBE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gimpies-form", "Gimpies-form\Gimpies-form.csproj", "{40647A6B-5637-4179-9AF0-8EEB1C465820}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gimpies-form", "Gimpies-form\Gimpies-form.csproj", "{40647A6B-5637-4179-9AF0-8EEB1C465820}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gimpies_Webshop", "Gimpies_Webshop\Gimpies_Webshop.csproj", "{4D517806-29BC-43CA-B857-BB920144540B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GimpiesApi", "GimpiesApi\GimpiesApi.csproj", "{CC02FC0E-F2A9-41AD-8863-71064F325A22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{40647A6B-5637-4179-9AF0-8EEB1C465820}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40647A6B-5637-4179-9AF0-8EEB1C465820}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40647A6B-5637-4179-9AF0-8EEB1C465820}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D517806-29BC-43CA-B857-BB920144540B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D517806-29BC-43CA-B857-BB920144540B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D517806-29BC-43CA-B857-BB920144540B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D517806-29BC-43CA-B857-BB920144540B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC02FC0E-F2A9-41AD-8863-71064F325A22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC02FC0E-F2A9-41AD-8863-71064F325A22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC02FC0E-F2A9-41AD-8863-71064F325A22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC02FC0E-F2A9-41AD-8863-71064F325A22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

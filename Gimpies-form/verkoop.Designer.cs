@@ -36,6 +36,7 @@ partial class verkoop
             this.Aantal = new System.Windows.Forms.Label();
             this.product = new System.Windows.Forms.Label();
             this.ERROR = new System.Windows.Forms.Label();
+            this.producten = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // product_inp
@@ -89,11 +90,22 @@ partial class verkoop
             this.ERROR.TabIndex = 5;
             this.ERROR.Text = "Error:";
             // 
+            // producten
+            // 
+            this.producten.Location = new System.Drawing.Point(12, 173);
+            this.producten.Name = "producten";
+            this.producten.Size = new System.Drawing.Size(776, 265);
+            this.producten.TabIndex = 6;
+            this.producten.Text = "producten";
+            this.producten.UseVisualStyleBackColor = true;
+            this.producten.Click += new System.EventHandler(this.producten_Click);
+            // 
             // verkoop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.producten);
             this.Controls.Add(this.ERROR);
             this.Controls.Add(this.product);
             this.Controls.Add(this.Aantal);
@@ -115,4 +127,5 @@ partial class verkoop
     private Label Aantal;
     private Label product;
     private Label ERROR;
+    private Button producten;
 }

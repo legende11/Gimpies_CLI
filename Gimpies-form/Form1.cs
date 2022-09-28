@@ -6,6 +6,7 @@ namespace Gimpies_form
     {
         private int tries = 3;
         private database DB = new database();
+        public static string USERNAME;
         public Form1()
         {
             tries = 3;
@@ -51,6 +52,7 @@ namespace Gimpies_form
             bool login = DB.CheckLogin(username_b.Text, password.Text);
             if (login)
             {
+                USERNAME = username_b.Text;
                 if (DB.getrank(username_b.Text) == 1)
                 {
                     this.Hide();

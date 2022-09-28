@@ -37,4 +37,12 @@ public partial class manager_menu : Form
     {
         this.Close();
     }
+
+    private void Users_Click(object sender, EventArgs e)
+    {
+        this.Hide();
+        Form users = new users();
+        users.ShowDialog();
+        this.Show();
+    }
 }

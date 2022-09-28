@@ -49,6 +49,16 @@ public partial class manager_aanpassen : Form
                 Prijs.Text = "";
                 return;
             }
+
+            if (TypeBestaat(type.Text) && type.Text != saveproduct.Type)
+            {
+                merk.Text = "Type";
+                maat.Text = "Al";
+                kleur.Text = "";
+                //Aantal.Text = "";
+                Prijs.Text = "";
+                return;
+            }
             Product NewProduct = new Product(merk.Text, type.Text, Convert.ToDouble(maat.Text), kleur.Text, saveproduct.Aantal, Convert.ToDouble(Prijs.Text), saveproduct.Uid);
             Product.StaticUpdate(saveproduct, NewProduct);
             Close();
@@ -62,5 +72,16 @@ public partial class manager_aanpassen : Form
             //Aantal.Text = "";
             Prijs.Text = "";
         }
+    }
+    private bool TypeBestaat(string TYPE)
+    {
+        foreach (Product product in Product.products)
+        {
+            if (product.Type == TYPE)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -1,0 +1,1 @@
+﻿FOR /L %i IN (1,1,9000) DO curl https://localhost:5001/login/username2/test2 >> test.txt

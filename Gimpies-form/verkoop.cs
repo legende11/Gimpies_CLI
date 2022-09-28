@@ -24,12 +24,20 @@ public partial class verkoop : Form
             }
             else
             {
-                ERROR.Text = $"Error: Niet genoeg producten op voorraad";
+                ERROR.Text = "Error: Niet genoeg producten op voorraad";
             }
         }
         catch (Exception)
         {
             ERROR.Text = "Error: product updaten niet gelukt";
         }
+    }
+
+    private void producten_Click(object sender, EventArgs e)
+    {
+        this.Hide();
+        Form voorraad = new voorraad();
+        voorraad.ShowDialog();
+        this.Show();
     }
 }

@@ -34,6 +34,7 @@ partial class manager_menu
             this.Aanpassen = new System.Windows.Forms.Button();
             this.Toevoegen = new System.Windows.Forms.Button();
             this.logout = new System.Windows.Forms.Button();
+            this.Users = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Verwijderen
@@ -76,11 +77,22 @@ partial class manager_menu
             this.logout.UseVisualStyleBackColor = true;
             this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
+            // Users
+            // 
+            this.Users.Location = new System.Drawing.Point(12, 169);
+            this.Users.Name = "Users";
+            this.Users.Size = new System.Drawing.Size(253, 109);
+            this.Users.TabIndex = 7;
+            this.Users.Text = "Users";
+            this.Users.UseVisualStyleBackColor = true;
+            this.Users.Click += new System.EventHandler(this.Users_Click);
+            // 
             // manager_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Users);
             this.Controls.Add(this.logout);
             this.Controls.Add(this.Verwijderen);
             this.Controls.Add(this.Aanpassen);
@@ -97,4 +109,5 @@ partial class manager_menu
     private Button Aanpassen;
     private Button Toevoegen;
     private Button logout;
+    private Button Users;
 }

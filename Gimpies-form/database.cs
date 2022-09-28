@@ -358,7 +358,7 @@ public class database
 
         {
             // String query = "UPDATE product SET (id,brand, type, size, color, price, aantal) VALUES (@id, @brand, @type, @size, @color, @price, @aantal) WHERE id = @id";
-            String query = "UPDATE product SET nameUser = @nameUser, passUser = @passUser, TypeUser = @typeuser WHERE id = @id;";
+            String query = "UPDATE login SET nameUser = @nameUser, passUser = @passUser, TypeUser = @typeuser WHERE id = @id;";
 
             using (SqlCommand command = new SqlCommand(query, Connection))
             {

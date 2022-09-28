@@ -34,6 +34,10 @@ namespace Gimpies_form
 
         private void delete_Click(object sender, EventArgs e)
         {
+            if (db.getuser(Convert.ToInt32(inpID.Text)).username == Form1.USERNAME)
+            {
+                return;
+            }
             db.deleteUser(Convert.ToInt32(inpID.Text));
         }
 
