@@ -118,8 +118,17 @@ namespace Gimpies
             Console.WriteLine("Voorraad");
             foreach (var product in products)
             {
+                if (product.Aantal < 5)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Black;
+                }
                 Console.WriteLine(
                     $"[{product.Uid}] Aantal {product.Aantal} Van {product.Kleur} {product.Merk} {product.Type} met de maat {product.Maat} voor de prijs van {product.Prijs}");
+                Console.ForegroundColor = ConsoleColor.Black;
             }
 
             Console.WriteLine("Druk op een knop om terug te gaan naar het menu.");
