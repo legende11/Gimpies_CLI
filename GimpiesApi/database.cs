@@ -72,6 +72,64 @@ public class database
                 return false;
             }
         }
+        
+        public static bool UpdateAmountPurchased(int id, int aantal)
+        {
+        
+            Connection.Close();
+            {
+                String query = "UPDATE product SET aantal_verkoct = @aantal WHERE id = @id;";
+
+                using (SqlCommand command = new SqlCommand(query, Connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+                    command.Parameters.AddWithValue("@aantal",GetAmountSold(id) - aantal);
+
+                    Connection.Open();
+                    int result = command.ExecuteNonQuery();
+                    // Check Error
+                    if (result < 0)
+                    {
+                        Console.WriteLine("Error inserting data into Database!");
+                        return false;
+                    } else {
+                        return true;
+                    }
+
+                }
+                return false;
+            }
+        }
+        
+        
+        public static int GetAmountSold(int id)
+        {
+            List<Product> products = new List<Product>();
+
+
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM \"product\" WHERE id = @id;", Connection))
+            {
+                cmd.Parameters.AddWithValue("@id", id);
+
+                
+                Connection.Close();
+                Connection.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    // Check is the reader has any rows at all before starting to read.
+                    if (!reader.HasRows)
+                        return 0;
+                    // Read advances to the next row.
+                    while (reader.Read())
+                    {
+                        return reader.GetInt32(reader.GetOrdinal("aantal_verkocht"));
+                    }
+                    Connection.Close();
+                }
+            }
+
+            return 0;
+        }
 
         public static List<Product> GetProducts()
         {

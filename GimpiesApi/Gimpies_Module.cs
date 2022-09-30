@@ -118,6 +118,7 @@ public class Gimpies_Module : ICarterModule
             {
                 return "405 - Not enough stock";
             };
+            database.products.UpdateAmountPurchased(productID, amount);
             string key = getKey(userID);
             int uid = database.UserDatabase.GetUser(key).id;
             return database.OrderDB.NewOrder(productID, uid, amount) ? ProductToString(database.products.GetProducts()) : "501 - Couldn't place order";
