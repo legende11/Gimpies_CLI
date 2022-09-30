@@ -9,14 +9,15 @@ public class Gimpies_Module : ICarterModule
     /**
      * how to use in an API environment
      * Always split the response by " - "
-     * as the fist part is ALWAYS a status code and the second part is the response or debugging text
+     * as the fist part is  a status code and the second part is the response or debugging text
      */
     /**
      * Success Codes
      * 200 - Login succesful
      * 201 - User registered
      * 202 - Order succesful
-     * 
+     */
+    /**
      * error codes
      * 400 - Wrong password
      * 401 - User already exists
