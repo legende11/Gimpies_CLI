@@ -116,6 +116,70 @@ public class database
 
         return products;
     }
+    
+    
+    public static Product getproduct(int uid)
+    {
+
+
+        using (SqlCommand cmd = new SqlCommand("SELECT * FROM \"product\";", Connection))
+        {
+            Connection.Close();
+            Connection.Open();
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                // Check is the reader has any rows at all before starting to read.
+                if (!reader.HasRows)
+                    return new Product("", "", -1, "", 0, 0, 0);
+                // Read advances to the next row.
+                while (reader.Read())
+                {
+                    Product p = new Product(reader.GetString(reader.GetOrdinal("brand")), reader.GetString(reader.GetOrdinal("type")),
+                        reader.GetDouble(reader.GetOrdinal("size")), reader.GetString(reader.GetOrdinal("color")), reader.GetInt32(reader.GetOrdinal("aantal")),
+                        reader.GetDouble(reader.GetOrdinal("price")), reader.GetInt32(reader.GetOrdinal("id")));
+                    if (p.Uid == uid)
+                    {
+                        return p;
+                    }
+                }
+                Connection.Close();
+            }
+        }
+
+        return new Product("", "", -1, "", 0, 0, 0);
+        
+    }
+    
+    
+    public static int getaantal(int uid)
+    {
+
+
+        using (SqlCommand cmd = new SqlCommand("SELECT * FROM \"product\";", Connection))
+        {
+            Connection.Close();
+            Connection.Open();
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                // Check is the reader has any rows at all before starting to read.
+                if (!reader.HasRows)
+                    return -1;
+                // Read advances to the next row.
+                while (reader.Read())
+                {
+                    
+                    if (reader.GetInt32(reader.GetOrdinal("id")) == uid)
+                    {
+                        return reader.GetInt32(reader.GetOrdinal("aantal_verkoct"));
+                    }
+                }
+                Connection.Close();
+            }
+        }
+
+        return -1;
+        
+    }
 
     public void SaveProducts(Product product)
     {
@@ -171,13 +235,22 @@ public class database
         // DELETE FROM table_name WHERE condition; 
     }
 
-    public static void updateProduct(int id, Product product)
+    public static void updateProduct(int id, Product product, int? verkocht)
     {
+        int verkocht2;
+        if (verkocht == null)
+        {
+            verkocht2 = getaantal(id);
+        }
+        else
+        {
+            verkocht2 = getaantal(id) + (int)verkocht;
+        }
         Connection.Close();
 
         {
             // String query = "UPDATE product SET (id,brand, type, size, color, price, aantal) VALUES (@id, @brand, @type, @size, @color, @price, @aantal) WHERE id = @id";
-            String query = "UPDATE product SET brand = @brand, type = @type, color = @color, price = @price, aantal = @aantal WHERE id = @id;";
+            String query = "UPDATE product SET brand = @brand, type = @type, color = @color, price = @price, aantal = @aantal, aantal_verkoct = @verkocht WHERE id = @id;";
 
             using (SqlCommand command = new SqlCommand(query, Connection))
             {
@@ -188,6 +261,8 @@ public class database
                 command.Parameters.AddWithValue("@color", product.Kleur);
                 command.Parameters.AddWithValue("@price", product.Prijs);
                 command.Parameters.AddWithValue("@aantal", product.Aantal);
+                command.Parameters.AddWithValue("@verkocht", verkocht2);
+
 
                 Connection.Open();
                 int result = command.ExecuteNonQuery();
@@ -376,5 +451,7 @@ public class database
             }
         }
     }
+    
+    
     
 }

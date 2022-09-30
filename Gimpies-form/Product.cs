@@ -56,15 +56,15 @@
         // update the products in the map by deleting the old one
         public void UpdateProduct(Product oldproduct, Product newproduct)
         {
-            database.updateProduct(oldproduct.Uid, newproduct);
+            database.updateProduct(oldproduct.Uid, newproduct, 0);
             products.Remove(oldproduct);
             products.Add(newproduct);
             sort(); // sort it so that the view products is ready once again
         }
         // added one in static context
-        public static void StaticUpdate(Product oldproduct, Product newproduct)
+        public static void StaticUpdate(Product oldproduct, Product newproduct, int verkocht)
         {
-            database.updateProduct(oldproduct.Uid, newproduct);
+            database.updateProduct(oldproduct.Uid, newproduct, verkocht);
             products.Remove(oldproduct);
             products.Add(newproduct);
             sort(); // sort it so that the view products is ready once again

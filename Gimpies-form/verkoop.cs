@@ -19,7 +19,8 @@ public partial class verkoop : Form
             int aantal = Convert.ToInt32(aantal_inp.Text);
             if (p.Aantal - aantal >= 0)
             {
-                Product.StaticUpdate(p, new Product(p.Merk, p.Type, p.Maat, p.Kleur, p.Aantal - aantal, p.Prijs, p.Uid));
+                
+                Product.StaticUpdate(p, new Product(p.Merk, p.Type, p.Maat, p.Kleur, p.Aantal - aantal, p.Prijs, p.Uid), aantal);
                 ERROR.Text = $"Success: Product {p.Type} is verkocht";
             }
             else
@@ -27,9 +28,9 @@ public partial class verkoop : Form
                 ERROR.Text = "Error: Niet genoeg producten op voorraad";
             }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            ERROR.Text = "Error: product updaten niet gelukt";
+            ERROR.Text = "Error: product updaten niet gelukt: " + ex;
         }
     }
 

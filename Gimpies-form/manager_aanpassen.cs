@@ -60,7 +60,7 @@ public partial class manager_aanpassen : Form
                 return;
             }
             Product NewProduct = new Product(merk.Text, type.Text, Convert.ToDouble(maat.Text), kleur.Text, saveproduct.Aantal, Convert.ToDouble(Prijs.Text), saveproduct.Uid);
-            Product.StaticUpdate(saveproduct, NewProduct);
+            Product.StaticUpdate(saveproduct, NewProduct, 0);
             Close();
         }
         catch (Exception)

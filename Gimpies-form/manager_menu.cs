@@ -45,4 +45,12 @@ public partial class manager_menu : Form
         users.ShowDialog();
         this.Show();
     }
+
+    private void But_Overzicht_Click(object sender, EventArgs e)
+    {
+        this.Hide();
+        Form overzicht = new Manager_Data();
+        overzicht.ShowDialog();
+        this.Show();
+    }
 }
