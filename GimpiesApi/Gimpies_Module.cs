@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GimpiesApi;
 using Newtonsoft.Json;
+using static GimpiesApi.database;
 
 public class Gimpies_Module : ICarterModule
 {
@@ -32,15 +32,14 @@ public class Gimpies_Module : ICarterModule
     // generate a uuidv4 for customer login cache
     private readonly Func<String> uuidv4 = () => Guid.NewGuid().ToString();
     // Get key by value
-    private readonly Func<string, string> getKey = value => LoginDictionary.FirstOrDefault(x => x.Value == value).Key; 
-    private database db = new database();
+    private readonly Func<string, string> getKey = value => LoginDictionary.FirstOrDefault(x => x.Value == value).Key;
 
-    private String ProductToString(List<database.products.Product> products)
+    private String ProductToString(List<products.Product> products)
     {
         String s = JsonConvert.SerializeObject(products);
         return s;
     }
-    private String OrdersToString(List<database.OrderDB.order> orders)
+    private String OrdersToString(List<OrderDB.order> orders)
     {
         return JsonConvert.SerializeObject(orders);
     }
@@ -57,11 +56,11 @@ public class Gimpies_Module : ICarterModule
             {
                 return "404 - Path not found";
             }
-            if (database.UserDatabase.GetUser(username).id.Equals(new database.UserDatabase.user().id))
+            if (UserDatabase.GetUser(username).id.Equals(new UserDatabase.user().id))
             {
                 return "402 - User not found";
             }
-            if (database.UserDatabase.GetUser(username).password != password)
+            if (UserDatabase.GetUser(username).password != password)
             {
                 return "400 - Incorrect password supplied";
             }
@@ -77,17 +76,15 @@ public class Gimpies_Module : ICarterModule
 
         app.MapGet("register/{username}/{password}", (String username, String password) =>
         {
-            if (database.UserDatabase.GetUser(username).id.Equals(new database.UserDatabase.user().id))
-            {
-                database.UserDatabase.newUser(username, password);
-                return "201 " + "-" + " New user made";
-            }
-            return "401 - User already exists";
+            if (!UserDatabase.GetUser(username).id.Equals(new UserDatabase.user().id))
+                return "401 - User already exists";
+            UserDatabase.newUser(username, password);
+            return "201 " + "-" + " New user made";
 
         });
         //product paths.
         // return the products as a json format that JS can read
-        app.MapGet("products/products", () => ProductToString(database.products.GetProducts()));
+        app.MapGet("products/products", () => ProductToString(products.GetProducts()));
         // generate a order and remove the stock.
         app.MapGet("products/order/{userID}/{productID}/{amount}", new Func<string, int, int, string>((string userID, int productID, int amount) =>
         {
@@ -114,14 +111,14 @@ public class Gimpies_Module : ICarterModule
                 return "501 - Server error";
             }
 
-            if (!database.products.UpdateProduct(productID, amount))
+            if (!products.UpdateProduct(productID, amount))
             {
                 return "405 - Not enough stock";
             };
-            database.products.UpdateAmountPurchased(productID, amount);
+            products.UpdateAmountPurchased(productID, amount);
             string key = getKey(userID);
-            int uid = database.UserDatabase.GetUser(key).id;
-            return database.OrderDB.NewOrder(productID, uid, amount) ? ProductToString(database.products.GetProducts()) : "501 - Couldn't place order";
+            int uid = UserDatabase.GetUser(key).id;
+            return OrderDB.NewOrder(productID, uid, amount) ? ProductToString(products.GetProducts()) : "501 - Couldn't place order";
 
         }));
         // get the orders of a specific user
@@ -136,9 +133,9 @@ public class Gimpies_Module : ICarterModule
                 return "402 - User not found";
             }
             string username = getKey(userid);
-            int id = database.UserDatabase.GetUser(username).id;
+            int id = UserDatabase.GetUser(username).id;
             
-            return OrdersToString(database.OrderDB.GetOrders(id));
+            return OrdersToString(OrderDB.GetOrders(id));
         });
     }
 }
