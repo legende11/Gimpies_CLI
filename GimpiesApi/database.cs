@@ -88,16 +88,12 @@ public class database
                     Connection.Open();
                     int result = command.ExecuteNonQuery();
                     // Check Error
-                    if (result < 0)
-                    {
-                        Console.WriteLine("Error inserting data into Database!");
-                        return false;
-                    } else {
+                    if (result >= 0)
                         return true;
-                    }
+                    Console.WriteLine("Error inserting data into Database!");
+                    return false;
 
                 }
-                return false;
             }
         }
         
