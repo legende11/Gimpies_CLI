@@ -70,7 +70,7 @@ namespace Gimpies_form
 
 
 
-            String right = $"Totaal verkocht: {rtotaal}\nMeest verkocht: {rmeestestr}\nMinst verkocht: {rminstestr}\nTotale omzet: {totaleomzet}";
+            string right = $"Totaal verkocht: {rtotaal}\nMeest verkocht: {rmeestestr}\nMinst verkocht: {rminstestr}\nTotale omzet: {totaleomzet}";
             txt_right.Text = right;
         }
     }
