@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GimpiesApi;
 using Newtonsoft.Json;
 using static GimpiesApi.database;
 
@@ -60,7 +61,7 @@ public class Gimpies_Module : ICarterModule
             {
                 return "402 - User not found";
             }
-            if (UserDatabase.GetUser(username).password != password)
+            if (UserDatabase.GetUser(username).password != new hash().ComputeSha256Hash(password))
             {
                 return "400 - Incorrect password supplied";
             }
@@ -78,7 +79,7 @@ public class Gimpies_Module : ICarterModule
         {
             if (!UserDatabase.GetUser(username).id.Equals(new UserDatabase.user().id))
                 return "401 - User already exists";
-            UserDatabase.newUser(username, password);
+            UserDatabase.newUser(username, new hash().ComputeSha256Hash(password));
             return "201 " + "-" + " New user made";
 
         });
