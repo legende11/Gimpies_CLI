@@ -21,7 +21,7 @@ namespace Gimpies_form
 
         private void load_Click(object sender, EventArgs e)
         {
-            usercl cl = db.getuser(Int32.Parse(inpID.Text));
+            usercl cl = database.GetUser(Int32.Parse(inpID.Text));
             username.Text = cl.username;
             password.Text = cl.password;
             id.Text = cl.rank.ToString();
@@ -34,7 +34,7 @@ namespace Gimpies_form
 
         private void delete_Click(object sender, EventArgs e)
         {
-            if (db.getuser(Convert.ToInt32(inpID.Text)).username == Form1.USERNAME)
+            if (database.GetUser(Convert.ToInt32(inpID.Text)).username == Form1.USERNAME)
             {
                 return;
             }

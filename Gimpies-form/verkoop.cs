@@ -30,7 +30,7 @@ public partial class verkoop : Form
         }
         catch (Exception ex)
         {
-            ERROR.Text = "Error: product updaten niet gelukt: " + ex;
+            ERROR.Text = $"Error: product updaten niet gelukt: {ex}";
         }
     }
 

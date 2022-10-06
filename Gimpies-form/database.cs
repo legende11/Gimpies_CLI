@@ -122,8 +122,10 @@ public class database
     {
 
 
-        using (SqlCommand cmd = new SqlCommand("SELECT * FROM \"product\";", Connection))
+        using (SqlCommand cmd = new SqlCommand("SELECT * FROM \"product\" WHERE id = @id;", Connection))
         {
+            cmd.Parameters.AddWithValue("@id", uid);
+
             Connection.Close();
             Connection.Open();
             using (SqlDataReader reader = cmd.ExecuteReader())
@@ -155,8 +157,9 @@ public class database
     {
 
 
-        using (SqlCommand cmd = new SqlCommand("SELECT * FROM \"product\";", Connection))
+        using (SqlCommand cmd = new SqlCommand("SELECT * FROM \"product\" WHERE id=@id;", Connection))
         {
+            cmd.Parameters.AddWithValue("@id", uid);
             Connection.Close();
             Connection.Open();
             using (SqlDataReader reader = cmd.ExecuteReader())
@@ -364,11 +367,11 @@ public class database
             }
         }
 
-        Product.products = database.getproducts();
+        
     }
 
         
-        public usercl getuser(int id)
+        public static usercl GetUser(int id)
         {
             using (SqlCommand cmd = new SqlCommand("SELECT * FROM \"login\";", Connection))
             {
