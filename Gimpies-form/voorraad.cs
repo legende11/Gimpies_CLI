@@ -15,10 +15,6 @@ public partial class voorraad : Form
         }
     }
 
-    private void voorraad_Load(object sender, EventArgs e)
-    {
-    }
-
     private void back_Click(object sender, EventArgs e)
     {
         Close();

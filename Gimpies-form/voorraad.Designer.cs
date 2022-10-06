@@ -62,7 +62,6 @@ partial class voorraad
             this.Controls.Add(this.vorraad);
             this.Name = "voorraad";
             this.Text = "voorraad";
-            this.Load += new System.EventHandler(this.voorraad_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

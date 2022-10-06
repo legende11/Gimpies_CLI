@@ -1,3 +1,6 @@
+using static System.Windows.Forms.Application;
+using static Gimpies_form.ApplicationConfiguration;
+
 namespace Gimpies_form
 {
     internal static class Program
@@ -10,8 +13,8 @@ namespace Gimpies_form
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Initialize();
+            Run(new Form1()); // open the login form, in the login.cs file.
         }
     }
 }
