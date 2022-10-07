@@ -1,4 +1,6 @@
-﻿namespace Gimpies;
+﻿using Gimpies_form;
+
+namespace Gimpies;
 
 public class Product
 {
@@ -26,20 +28,6 @@ public class Product
     {
         Console.WriteLine($"Merk {Merk}\n Type {Type}\n  Maat {Maat}\n   Kleur {Kleur}\n    Aantal {Aantal}\n     prijs {Prijs}\n      Uid {Uid}");
     }
-    // best way to get products for now
-    public static List<Product> GenerateProducts()
-    {
-        //TODO: Get a way to save the list to a file and read it on startup. this makes it that changes persist between sessions
-        List<Product> Products = new List<Product>
-        {
-            new Product("Nike", "Air max", 32, "Zwart", 16, 120.00, '1'),
-            new Product("Adidas", "Schoenen", 33, "Wit", 12, 126.90, '2'),
-            new Product("Scapino", "Schoenen", 45, "Oranje & Blauw", 12, 9, '3'),
-            new Product("Nike", "Air max 1", 32, "Zwart", 16, 120.00, '4')
-        };
-
-        return Products;
-    }
 
     public static bool exists(string merk, string type, double maat, string kleur)
     {
@@ -54,14 +42,6 @@ public class Product
     }
 
     // update the products in the map by deleting the old one
-    public void UpdateProduct(Product oldproduct, Product newproduct)
-    {
-        database.updateProduct(oldproduct.Uid, newproduct, 0);
-        products.Remove(oldproduct);
-        products.Add(newproduct);
-        sort(); // sort it so that the view products is ready once again
-    }
-    // added one in static context
     public static void StaticUpdate(Product oldproduct, Product newproduct, int verkocht)
     {
         database.updateProduct(oldproduct.Uid, newproduct, verkocht);
@@ -81,7 +61,7 @@ public class Product
         throw new InvalidOperationException();
     }
 
-    public static void sort()
+    static void sort()
     {
         // temporarily create a new list
         List<Product> tmpproducts = new List<Product>();
