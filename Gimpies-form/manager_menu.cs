@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace Gimpies_form;
+﻿namespace Gimpies_form;
 
 public partial class manager_menu : Form
 {

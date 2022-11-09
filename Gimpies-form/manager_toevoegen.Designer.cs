@@ -68,7 +68,6 @@ partial class manager_toevoegen
             this.type.Name = "type";
             this.type.Size = new System.Drawing.Size(100, 23);
             this.type.TabIndex = 13;
-            this.type.TextChanged += new System.EventHandler(this.type_TextChanged);
             // 
             // merk
             // 

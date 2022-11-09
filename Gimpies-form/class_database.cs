@@ -10,7 +10,8 @@ public class database
 
     private static SqlConnection Connection = new SqlConnection(constring);
 
-
+    
+    
     public static List<Product> getproducts()
     {
         List<Product> products = new List<Product>();
@@ -28,7 +29,7 @@ public class database
         {
             Product p = new Product(reader.GetString(reader.GetOrdinal("brand")), reader.GetString(reader.GetOrdinal("type")),
                 reader.GetDouble(reader.GetOrdinal("size")), reader.GetString(reader.GetOrdinal("color")), reader.GetInt32(reader.GetOrdinal("aantal")),
-                reader.GetDouble(reader.GetOrdinal("price")), reader.GetInt32(reader.GetOrdinal("id")));
+                reader.GetDouble(reader.GetOrdinal( "price")), reader.GetInt32(reader.GetOrdinal("id")));
             products.Add(p);
         }
         Connection.Close();
@@ -58,7 +59,10 @@ public class database
         Connection.Close();
 
         return -1;
+        
     }
+    
+    
 
     public void SaveProducts(Product product)
     {

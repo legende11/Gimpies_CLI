@@ -85,10 +85,6 @@ public partial class manager_toevoegen : Form
     {
     }
 
-    private void type_TextChanged(object sender, EventArgs e)
-    {
-    }
-
     private void merk_TextChanged(object sender, EventArgs e)
     {
     }

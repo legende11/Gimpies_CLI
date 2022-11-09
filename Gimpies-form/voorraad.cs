@@ -11,7 +11,7 @@ public partial class voorraad : Form
         foreach (Product product in Product.products)
         {
             vorraad.Text +=
-                $"\n ID: {product.Uid} Merk: {product.Merk} Type: ${product.Type} Maat: {product.Maat} Kleur: {product.Kleur} Aantal: {product.Aantal} Prijs: {product.Prijs}";
+                $"ID: {product.Uid} Merk: {product.Merk} Type: ${product.Type} Maat: {product.Maat} Kleur: {product.Kleur} Aantal: {product.Aantal} Prijs: {product.Prijs}\n";
         }
     }
 

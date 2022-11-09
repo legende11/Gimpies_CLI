@@ -24,11 +24,6 @@ public class Product
         Uid = uid;
     }
 
-    public void cout()
-    {
-        Console.WriteLine($"Merk {Merk}\n Type {Type}\n  Maat {Maat}\n   Kleur {Kleur}\n    Aantal {Aantal}\n     prijs {Prijs}\n      Uid {Uid}");
-    }
-
     public static bool exists(string merk, string type, double maat, string kleur)
     {
         foreach (Product product in products)
